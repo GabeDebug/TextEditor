@@ -51,9 +51,9 @@ namespace TextEditor
             do
             {
                 text += Console.ReadLine();
-                text += Environment.NewLine;
+                text += Environment.NewLine; 
             }
-            while (Console.ReadKey().Key != ConsoleKey.Escape);
+            while (Console.ReadKey().Key != ConsoleKey.Escape); // Mantém o programa rodando até a Tecla ESC for pressionada
 
             Salvar(text);
         }
@@ -63,11 +63,11 @@ namespace TextEditor
             Console.Clear();
             Console.WriteLine("Qual caminho para salvar? ");
 
-            var path = Console.ReadLine();
+            var path = Console.ReadLine() // pegando o pegando o caminho de aonde vai ser colocado
             
             using (var file =  new StreamWriter(path)) // cria a "Ponte" de escrita para o camainho especifico
             {
-                file.Write(text);
+                file.Write(text); // Grava o conteúdo do texto dentro do arquivo aberto 
             }
 
             Console.WriteLine($"Arquivo Salvo {path} com sucesso :)");
