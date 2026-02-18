@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace TextEditor
 {
@@ -21,11 +22,11 @@ namespace TextEditor
 
             switch (option)
             {
-                case 0: System.Environment.Exit(0);
-                    break;
                 case 1: Abrir();
                     break;
                 case 2: Criar();
+                    break;
+                case 3: System.Environment.Exit(0);
                     break;
                 default: Menu();
                     break;
@@ -54,6 +55,19 @@ namespace TextEditor
             while (Console.ReadKey().Key != ConsoleKey.Escape);
 
             Console.WriteLine(text);
+        }
+
+        static void Salvar(string text)
+        {
+            Console.Clear();
+            Console.WriteLine("Qual caminho para salvar? ");
+
+            var path = Console.ReadLine();
+            
+            using (var file =  new StreamWriter(path)) // cria a "Ponte" de escrita para o camainho especifico
+            {
+                file.Write(text);
+            }
         }
     }
 }
