@@ -37,7 +37,18 @@ namespace TextEditor
 
         static void Abrir()
         {
-            
+            Console.Clear();
+            Console.WriteLine("Qual caminho do arquivo?");
+            string path = Console.ReadLine();
+
+            using(var file = new StreamReader(path))
+            {
+                string text = file.ReadToEnd(); // vai ler o caminho até o final
+                Console.WriteLine(text);
+            }
+            Console.WriteLine("");
+            Console.ReadLine();
+            Menu();
         }
 
         static void Criar()
@@ -63,7 +74,7 @@ namespace TextEditor
             Console.Clear();
             Console.WriteLine("Qual caminho para salvar? ");
 
-            var path = Console.ReadLine() // pegando o pegando o caminho de aonde vai ser colocado
+            var path = Console.ReadLine(); // pegando o pegando o caminho de aonde vai ser colocado
             
             using (var file =  new StreamWriter(path)) // cria a "Ponte" de escrita para o camainho especifico
             {
